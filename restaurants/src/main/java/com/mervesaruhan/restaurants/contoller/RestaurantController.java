@@ -30,12 +30,12 @@ public class RestaurantController {
     }
 
     @GetMapping
-    public ResponseEntity<RestResponse<List<RestaurantResponseDto>>> getRestaurants() {
+    public ResponseEntity<RestResponse<List<RestaurantResponseDto>>> getAllRestaurants() {
         return ResponseEntity.ok(RestResponse.of(restaurantService.getAllRestaurants()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RestResponse<RestaurantResponseDto>> getRestaurant(@PathVariable Long id) {
+    public ResponseEntity<RestResponse<RestaurantResponseDto>> getRestaurantById(@PathVariable Long id) {
         return ResponseEntity.ok(RestResponse.of(restaurantService.getRestaurantById(id)));
     }
 

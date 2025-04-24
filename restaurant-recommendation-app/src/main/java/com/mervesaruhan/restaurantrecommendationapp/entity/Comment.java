@@ -39,6 +39,6 @@ public class Comment {
     //@ManyToOne
     //@JoinColumn(name="RESTAURANT_ID")
     @Column(name="RESTAURANT_ID",nullable = false)
-    private String restaurantId;
+    private Long restaurantId;
 
 }

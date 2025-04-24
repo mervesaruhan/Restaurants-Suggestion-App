@@ -8,5 +8,5 @@ public record CommentResponseDto(
         String text,
         Long customerId,
         String customerFullName,
-        String restaurantId) {
+        Long restaurantId) {
 }

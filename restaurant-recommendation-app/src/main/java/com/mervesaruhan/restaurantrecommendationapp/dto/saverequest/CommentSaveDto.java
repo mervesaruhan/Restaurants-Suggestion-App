@@ -18,5 +18,5 @@ public record CommentSaveDto(
         Long customerId,
 
         @NotBlank(message = "Restoran ID boş olamaz.")
-        String restaurantId) {
+        Long restaurantId) {
 }
