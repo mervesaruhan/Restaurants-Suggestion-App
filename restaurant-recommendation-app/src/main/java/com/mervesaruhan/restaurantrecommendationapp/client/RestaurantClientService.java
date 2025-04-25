@@ -2,6 +2,7 @@ package com.mervesaruhan.restaurantrecommendationapp.client;
 
 
 import ch.qos.logback.classic.Logger;
+import com.mervesaruhan.restaurantrecommendationapp.dto.response.CommentResponseDto;
 import com.mervesaruhan.restaurantrecommendationapp.restresponse.RestResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,13 +40,26 @@ public class RestaurantClientService {
     }
 
 
-    public RestaurantDto getRestaurantById(@PathVariable Long id) {
-        try{
+    public RestaurantDto getRestaurantById(Long id) {
+        try {
             ResponseEntity<RestResponse<RestaurantDto>> response = restaurantClient.getRestaurantById(id);
-            return response.getBody().getData();
-        }catch (Exception e){
-            log.error(e.getMessage());
+            if (response.getBody() != null && response.getBody().getData() != null) {
+                return response.getBody().getData();
+            } else {
+                log.warn("Restaurant response or data is null for ID: {}", id);
+                return null;
+            }
+        } catch (Exception e) {
+            log.error("Feign isteği başarısız oldu - restaurantId {}: {}", id, e.getMessage());
             return null;
+        }
+    }
+
+    public void updateRestaurantByCommentsAndScore(Long restaurantId, List<CommentResponseDto> commentDTOList) {
+        try {
+            restaurantClient.updateCommentsAndScore(restaurantId,commentDTOList);
+        } catch (Exception e) {
+            log.error(e.getMessage());
         }
     }
 }

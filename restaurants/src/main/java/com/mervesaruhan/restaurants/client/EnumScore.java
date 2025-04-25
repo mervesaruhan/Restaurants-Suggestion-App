@@ -1,4 +1,4 @@
-package com.mervesaruhan.restaurants.client.model;
+package com.mervesaruhan.restaurants.client;
 
 import java.util.Arrays;
 

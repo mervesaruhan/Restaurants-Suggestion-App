@@ -45,5 +45,10 @@ public class CommentController {
         commentService.deleteCommentById(id);
         return ResponseEntity.ok(RestResponse.empty());
     }
+
+    @GetMapping("/{restaurantsId}")
+    public ResponseEntity<RestResponse<List<CommentResponseDto>>> getAllCommentsByRestaurantId(@PathVariable Long restaurantsId) {
+        return ResponseEntity.ok(RestResponse.of(commentService.getAllByRestaurantId(restaurantsId)));
+    }
 }
 

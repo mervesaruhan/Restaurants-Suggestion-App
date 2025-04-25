@@ -1,15 +1,15 @@
-package com.mervesaruhan.restaurants.client.model;
+package com.mervesaruhan.restaurants.client;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class CommentDto {
+public class CommentResponseDto {
     private Long id;
     private EnumScore score;
     private String text;
     private Long customerId;
     private String customerFullName;
-    private String restaurantI;
+    private String restaurantId;
 }
